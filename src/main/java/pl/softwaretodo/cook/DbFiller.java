@@ -17,7 +17,7 @@ public class DbFiller {
   private static final boolean SAMPLE_RECIPES = true;
 
   @Inject
-  RecipeService rr;
+  RecipeService service;
 
   @PostConstruct
   public void run() {
@@ -27,13 +27,16 @@ public class DbFiller {
   }
 
   private void insertSampleRecipes() {
+    service.clearCollection();
+
     Recipe r = new Recipe();
     r.setName("Bigos");
     r.setProducts(new ArrayList<>());
     r.getProducts().add("Kapusta");
     r.getProducts().add("Mięso");
     r.setOwnerId("1454497121344050");
-    rr.save(r);
+    r.setDescription("Pokrój kapustę. Wymieszaj.");
+    service.save(r);
 
     r = new Recipe();
     r.setName("Gołąbki");
@@ -42,7 +45,8 @@ public class DbFiller {
     r.getProducts().add("Mięso");
     r.getProducts().add("Ryż");
     r.setOwnerId("1454497121344050");
-    rr.save(r);
+    r.setDescription("Wymieszaj mięso mielone z ryżem. Zawiń w kapustę.");
+    service.save(r);
 
     r = new Recipe();
     r.setName("Surówka");
@@ -50,7 +54,8 @@ public class DbFiller {
     r.getProducts().add("Kapusta");
     r.getProducts().add("Marchewka");
     r.setOwnerId("1454497121344050");
-    rr.save(r);
+    r.setDescription("Pokrój i wymieszaj.");
+    service.save(r);
   }
 
 }

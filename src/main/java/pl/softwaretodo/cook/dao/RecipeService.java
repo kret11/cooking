@@ -27,5 +27,10 @@ public class RecipeService {
     collection.insertOne(r);
   }
 
+  public void clearCollection() {
+    MongoCollection<Recipe> collection = database.getCollection("recipes", Recipe.class);
+    collection.drop();
+  }
+
 
 }

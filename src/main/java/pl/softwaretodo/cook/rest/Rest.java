@@ -17,12 +17,12 @@ import pl.softwaretodo.cook.model.Recipe;
 public class Rest {
 
   @Inject
-  RecipeService rr;
+  RecipeService service;
 
   @GET
   @Path("/recipes")
   public List<Recipe> search(@QueryParam("products") List<String> products) {
-    return rr.findByProducts(products);
+    return service.findByProducts(products);
   }
 
 }
