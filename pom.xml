@@ -32,7 +32,35 @@
 		</dependency>
 	</dependencies>
 
+
 	<build>
 		<finalName>cooking</finalName>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>tomee</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomee.maven</groupId>
+						<artifactId>tomee-maven-plugin</artifactId>
+						<version>8.0.0-M1</version>
+						<configuration>
+							<tomeeClassifier>plume</tomeeClassifier>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>
